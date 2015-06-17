@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView android:text="@string/errorDialog"
+        android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:textSize="25sp" />
+    
+    <TextView android:id="@+id/trans"
+        android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="20sp" />
+
+    <View android:layout_width="fill_parent"
+       android:layout_height="3dp"
+       android:background="@android:color/black"/>
+    
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical"
+			android:textSize="20sp"
+			android:text="@string/transactLabel" />
+        <RadioGroup android:id="@+id/rmvrtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        	<RadioButton android:id="@+id/removeDrug"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:textSize="20sp"
+            	android:text="@string/remove" />
+        	<RadioButton android:id="@+id/returnDrug"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:textSize="20sp"
+            	android:text="@string/rtn" />
+        </RadioGroup>
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textSize="20sp"
+		    android:text="@string/qty" />
+
+	    <EditText
+	        android:id="@+id/qty"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:inputType="number"
+	        android:singleLine="true"
+	        android:imeOptions="actionDone" />
+
+    </LinearLayout>
+    
+    <RadioGroup android:id="@+id/transSel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+	    
+	    <LinearLayout android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+	        <RadioButton android:id="@+id/selPat"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:onClick="selectTransType" />
+	        <TextView android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textSize="20sp"
+			    android:text="@string/nurseprompt" />
+	        <Spinner 
+			    android:id="@+id/nurse"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:drawSelectorOnTop="true" />
+	        <TextView android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textSize="20sp"
+			    android:text="@string/patientprompt" />
+	        <EditText
+		        android:id="@+id/patentEntry"
+		        android:singleLine="true"
+		        android:inputType="textNoSuggestions"
+		        android:imeOptions="actionDone"
+		        android:layout_width="0dip"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:textSize="20sp" />
+	    </LinearLayout>
+	    
+	    <LinearLayout android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+	        <RadioButton android:id="@+id/selOR"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:onClick="selectTransType" />
+	        <TextView android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textSize="20sp"
+			    android:text="@string/orrmprompt" />
+	        <Spinner 
+			    android:id="@+id/orRm"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:drawSelectorOnTop="true" />
+	        <TextView android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textSize="20sp"
+			    android:text="@string/crnaprompt" />
+	        <Spinner 
+			    android:id="@+id/crna"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:drawSelectorOnTop="true" />
+	        <TextView android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textSize="20sp"
+			    android:text="@string/drprompt" />
+	        <Spinner 
+			    android:id="@+id/doctor"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:drawSelectorOnTop="true" />
+	    </LinearLayout>
+    
+    </RadioGroup>
+    
+    <LinearLayout android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal">
+    
+	    <Button android:id="@+id/saveTrans"
+	        android:text="@string/saveConfig"
+	        android:background="@drawable/button"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+    
+    	<Button android:id="@+id/cancel"
+            android:text="@+string/cancel"
+            android:background="@drawable/button"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content" />
+    	
+    </LinearLayout>
+
+</LinearLayout>

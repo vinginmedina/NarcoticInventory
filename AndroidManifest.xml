@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ving.narcoticinventory"
+    android:versionCode="8"
+    android:versionName="1.0.1.2" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="22" />
+    
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    
+    <supports-screens
+        android:largeScreens="false"
+        android:normalScreens="false"
+        android:requiresSmallestWidthDp="720"
+        android:smallScreens="false"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name="com.ving.narcoticinventory.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ving.narcoticinventory.MainActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ving.narcoticinventory.ManageConfiguration"
+            android:label="ManageConfiguration" >
+        </activity>
+        <activity
+            android:name="com.ving.narcoticinventory.SetDrugCounts"
+            android:label="SetDrugCounts" 
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="com.ving.narcoticinventory.SetFinalDrugCounts"
+            android:label="SetFinalDrugCounts"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="com.ving.narcoticinventory.AddDrugStock"
+            android:label="AddDrugStock"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="com.ving.narcoticinventory.RemDrugStock"
+            android:label="RemDrugStock"
+            android:configChanges="orientation|screenSize" >
+        </activity>
+        <activity
+            android:name="com.ving.narcoticinventory.ViewPrintReport"
+            android:label="ViewPrintReport" >
+        </activity>
+        <activity
+            android:name="com.ving.narcoticinventory.CaptureSignature"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:label="CaptureSignature" >
+        </activity>
+    </application>
+
+</manifest>

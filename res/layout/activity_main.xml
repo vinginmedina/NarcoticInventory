@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainBackground"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical" >
+    
+	<TextView android:id="@+id/facilityname"
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:text="@string/facilityname" />
+
+	<View android:layout_width="fill_parent"
+       android:layout_height="3dp"
+       android:background="@android:color/black"/>
+    
+    <ExpandableListView android:id="@+id/transview"
+        android:transcriptMode="disabled"
+    	android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:listSelector="@android:color/transparent"/>
+    <!--         android:transcriptMode="alwaysScroll" -->
+    
+</LinearLayout>

@@ -1,0 +1,62 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ving.narcoticinventory.MainActivity" >
+    
+    <item
+        android:id="@+id/add_stock"
+        android:title="@string/addStock"
+        android:showAsAction="ifRoom" />
+    
+    <item 
+        android:id="@+id/endofday"
+        android:title="@string/endofday"
+        android:showAsAction="ifRoom" />
+    
+    <item 
+        android:id="@+id/exit"
+        android:title="@string/exit"
+        android:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    
+    <item 
+        android:id="@+id/set_counts"
+        android:title="@string/set_counts"
+        android:orderInCategory="200"
+        android:showAsAction="never" />
+    
+    <item
+        android:id="@+id/set_finalCounts"
+        android:title="@string/set_finalCounts"
+        android:orderInCategory="300"
+        android:showAsAction="never" />
+    
+    <item
+        android:id="@+id/addStock"
+        android:title="@string/addStock"
+        android:orderInCategory="400"
+        android:showAsAction="never" />
+    
+    <item
+        android:id="@+id/remStock"
+        android:title="@string/remStock"
+        android:orderInCategory="500"
+        android:showAsAction="never" />
+    
+    <item
+        android:id="@+id/deleteReport"
+        android:title="@string/deleteReport"
+        android:orderInCategory="600"
+        android:showAsAction="never" />
+    
+    <item
+        android:id="@+id/printReport"
+        android:title="@string/printReport"
+        android:orderInCategory="700"
+        android:showAsAction="never" />
+
+</menu>

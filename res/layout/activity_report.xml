@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundblue" >
+    
+	<LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:id="@+id/thing">
+        <Button android:id="@+id/printRpt"
+            android:text="@string/printRpt"
+            android:background="@drawable/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick" />
+        <Button android:id="@+id/emailRpt"
+            android:text="@string/emailRpt"
+            android:background="@drawable/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick" />
+        <Button android:id="@+id/rtn"
+            android:text="@string/rtn"
+            android:background="@drawable/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick" />
+    </LinearLayout>
+    
+    <WebView android:id="@+id/rptView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+    
+</LinearLayout>

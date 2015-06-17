@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/remStockBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:layout_gravity="center"
+	    android:textSize="40sp"
+	    android:text="@string/remStock" />
+    
+    <View android:layout_width="fill_parent"
+       android:layout_height="3dp"
+       android:background="@android:color/black"/>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textSize="20sp"
+		    android:text="@string/nursesReview" />
+        <Spinner 
+		    android:id="@+id/nurse1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:drawSelectorOnTop="true" />
+        <Spinner 
+		    android:id="@+id/nurse2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:drawSelectorOnTop="true" />
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/cancel"
+            android:text="@string/cancel"
+            android:background="@drawable/button"
+            android:onClick="remDrugOnClick"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button android:id="@+id/save"
+            android:text="@string/save"
+            android:background="@drawable/button"
+            android:onClick="remDrugOnClick"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView android:text="@string/remStockAdminNote"
+            android:layout_height="wrap_content"
+	    	android:layout_width="0dp"
+	    	android:layout_weight="1"
+	    	android:layout_marginLeft="20dip"
+	    	android:layout_gravity="center"
+	    	android:textSize="25sp" />
+    </LinearLayout>
+    
+    <View android:layout_width="fill_parent"
+       android:layout_height="3dp"
+       android:background="@android:color/black"/>
+    
+    <ListView android:id="@+id/drugList"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="30sp" />
+
+</LinearLayout>

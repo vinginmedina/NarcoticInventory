@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/settingsLabel"
+        android:gravity="center_horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textsizecolor"
+        android:textSize="40sp" />
+    
+    <View android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@android:color/black"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <TextView android:id="@+id/fts"
+	        android:layout_height="wrap_content"
+	        android:layout_width="0px"
+	        android:layout_weight="1"
+	        android:text="@string/facilityText" />
+	    <Button android:id="@+id/colorFT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <Button android:id="@+id/sizeFT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:text="@string/reset" />
+        <SeekBar android:id="@+id/seekFTS"
+        	android:layout_width="0px"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:layout_gravity="center_vertical"
+        	android:max="100"/>
+    </LinearLayout>
+    
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <TextView android:id="@+id/dts"
+	        android:layout_height="wrap_content"
+	        android:layout_width="0px"
+	        android:layout_weight="1"
+	        android:text="@string/drugText" />
+	    <Button android:id="@+id/colorDT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <Button android:id="@+id/sizeDT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:text="@string/reset" />
+        <SeekBar android:id="@+id/seekDTS"
+        	android:layout_width="0px"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:layout_gravity="center_vertical"
+        	android:max="50"/>
+    </LinearLayout>
+    
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+
+    <LinearLayout
+    	android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <TextView android:id="@+id/tts"
+	        android:layout_height="wrap_content"
+	        android:layout_width="0px"
+	        android:layout_weight="1"
+	        android:text="@string/transText" />
+	    <Button android:id="@+id/colorTT"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+    	android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <Button android:id="@+id/sizeTT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:text="@string/reset" />
+        <SeekBar android:id="@+id/seekTTS"
+            android:layout_width="0px"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:layout_gravity="center_vertical"
+        	android:max="50"/>
+    </LinearLayout>
+    
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+    
+    <LinearLayout
+    	android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <TextView android:id="@+id/ets"
+	        android:layout_height="wrap_content"
+	        android:layout_width="0px"
+	        android:layout_weight="1"
+	        android:text="@string/transErrorText" />
+	    <Button android:id="@+id/colorTE"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+    <LinearLayout
+    	android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+	    <Button android:id="@+id/sizeTE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:text="@string/reset" />
+        <SeekBar android:id="@+id/seekTES"
+            android:layout_width="0px"
+        	android:layout_height="wrap_content"
+        	android:layout_weight="1"
+        	android:layout_gravity="center_vertical"
+        	android:max="50"/>
+    </LinearLayout>
+    
+    <View android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"/>
+    
+    <Button android:id="@+id/saveConfig"
+            android:text="@string/saveConfig"
+            android:background="@drawable/button"
+            android:onClick="settingsOnClickTextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+	android:focusableInTouchMode="true" >
+    
+    <TextView
+        android:id="@+id/drugname"
+	    android:layout_height="wrap_content"
+	    android:layout_width="wrap_content"
+	    android:layout_gravity="left"
+	    android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/count1"
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:layout_gravity="center"
+	    android:textSize="30sp" />
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView android:text="@string/verifyQty"
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content"
+		    android:layout_gravity="center"
+		    android:textSize="30sp" />
+        <TextView
+	        android:id="@+id/qty"
+	        android:textSize="30sp"
+	        android:layout_marginLeft="15dp"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	        android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+    <LinearLayout android:layout_width="match_parent"
+     	android:layout_height="wrap_content"
+     	android:orientation="horizontal">
+     	<Button android:id="@+id/qty1"
+        	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:layout_margin="10dp"
+         	android:text="1" />
+     	<Button android:id="@+id/qty2"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:layout_margin="10dp"
+         	android:text="2" />
+     	<Button android:id="@+id/qty3"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:layout_margin="10dp"
+         	android:text="3" />
+     	<Button android:id="@+id/qty4"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:layout_margin="10dp"
+         	android:text="4" />
+     	<Button android:id="@+id/qty5"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:layout_margin="10dp"
+         	android:text="5" />
+     	<Button android:id="@+id/bksp"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_margin="10dp"
+        	android:text="Bksp" />
+	</LinearLayout>
+	<LinearLayout android:layout_width="match_parent"
+      	android:layout_height="wrap_content"
+      	android:orientation="horizontal">
+      	<Button android:id="@+id/qty6"
+          	android:layout_width="wrap_content"
+          	android:layout_height="wrap_content"
+          	android:layout_margin="10dp"
+          	android:text="6" />
+      	<Button android:id="@+id/qty7"
+          	android:layout_width="wrap_content"
+          	android:layout_height="wrap_content"
+          	android:layout_margin="10dp"
+          	android:text="7" />
+      	<Button android:id="@+id/qty8"
+          	android:layout_width="wrap_content"
+          	android:layout_height="wrap_content"
+          	android:layout_margin="10dp"
+          	android:text="8" />
+      	<Button android:id="@+id/qty9"
+          	android:layout_width="wrap_content"
+          	android:layout_height="wrap_content"
+          	android:layout_margin="10dp"
+          	android:text="9" />
+      	<Button android:id="@+id/qty0"
+         	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+         	android:layout_margin="10dp"
+         	android:text="0" />
+     	<Button android:id="@+id/clr"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_margin="10dp"
+        	android:text="Clr" />
+	</LinearLayout>
+    
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/save"
+            android:text="@string/save"
+            android:background="@drawable/button"
+            android:onClick="drugCountOnClick"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button android:id="@+id/cancel"
+            android:text="@string/cancel"
+            android:background="@drawable/button"
+            android:onClick="drugCountOnClick"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</LinearLayout>

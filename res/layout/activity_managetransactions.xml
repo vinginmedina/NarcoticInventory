@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+	<TextView android:id="@+id/facilityname"
+	    android:layout_height="wrap_content"
+	    android:layout_width="fill_parent"
+	    android:textSize="60sp"
+	    android:text="@string/facilityname" />
+
+	<View android:layout_width="fill_parent"
+       android:layout_height="3dp"
+       android:background="@android:color/black"/>
+	
+	<LinearLayout android:id="@+id/mainBackground"
+	    android:layout_width="match_parent"
+	    android:background="@drawable/pills"
+	    android:layout_height="0px"
+	    android:layout_weight="1"
+	    android:orientation="horizontal" >
+        
+	    <LinearLayout android:orientation="vertical"
+        	android:layout_weight="1"
+        	android:layout_height="match_parent"
+        	android:layout_width="0px">
+	    	<fragment class="com.ving.narcoticinventory.DrugListFragment"
+            	android:id="@+id/druglistcontrol"
+            	android:layout_weight="1"
+            	android:layout_width="match_parent"
+            	android:layout_height="0px" />
+	    	<Button android:id="@+id/returnBtn"
+            	android:text="@string/rtn"
+            	android:background="@drawable/button"
+            	android:onClick="manageTransactionOnClick"
+            	android:layout_gravity="center"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content" />
+	    </LinearLayout>
+	    
+	    <FrameLayout android:id="@+id/drugcontrol"
+	        android:layout_weight="3"
+            android:layout_width="0px"
+            android:background="@android:color/transparent"
+            android:layout_height="match_parent" />
+<!--             android:background="?android:attr/detailsElementBackground" /> -->
+	</LinearLayout>
+	
+</LinearLayout>
