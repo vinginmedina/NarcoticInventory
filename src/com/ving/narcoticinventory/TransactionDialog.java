@@ -523,12 +523,11 @@ public class TransactionDialog {
 					});
 			dialog.show();
 		} else if ((getTransType() == WASTETRANS) &&
-				((wasteAmt.equals("")) || (patientWaste.equals("") ||
-				(wasteReason.equals("")) || (wasteNurse1Value.equals("")) ||
-				(wasteNurse2Value.equals(""))))) {
+				((wasteAmt.equals("")) || (wasteReason.equals("")) ||
+				(wasteNurse1Value.equals("")) || (wasteNurse2Value.equals("")))) {
 			AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
             dialog.setTitle("Missing Data");
-            dialog.setMessage("Please enter the Wasted Amount, Patient, Reason and both Nurses");
+            dialog.setMessage("Please enter the Wasted Amount, Reason and both Nurses");
             dialog.setCancelable(false);
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog,int id) {
