@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -74,6 +75,7 @@ public class TransactionDialog {
 	private RadioButton patTrans = null;
 	private RadioButton orTrans = null;
 	private RadioButton wasteTrans = null;
+	private CheckBox naCB = null;
 	private AlertDialog.Builder dialog = null;
 	private AlertDialog.Builder confirmDialog = null;
 	private int qty;
@@ -146,6 +148,8 @@ public class TransactionDialog {
 		patientItem = (EditText) dialogView.findViewById(R.id.patientEntry);
 		wasteItem = (EditText) dialogView.findViewById(R.id.wasteEntry);
 		wastepatientItem = (EditText) dialogView.findViewById(R.id.patientEntryW);
+		naCB = (CheckBox) dialogView.findViewById(R.id.naCheckBox);
+		naCB.setChecked(false);
 		wasteReasonItem = (EditText) dialogView.findViewById(R.id.wasteReason);
         
 		nursesList = myApp.getSpinnerData("Nurses");
@@ -433,7 +437,7 @@ public class TransactionDialog {
 	private void confirm() {
 		final String patient = patientItem.getText().toString();
 		final String wasteAmt = wasteItem.getText().toString();
-		final String patientWaste = wastepatientItem.getText().toString();
+		String patientWaste = wastepatientItem.getText().toString();
 		final String wasteReason = wasteReasonItem.getText().toString();
 		String action = "";
 		final int act;
@@ -524,10 +528,23 @@ public class TransactionDialog {
 			dialog.show();
 		} else if ((getTransType() == WASTETRANS) &&
 				((wasteAmt.equals("")) || (wasteReason.equals("")) ||
+				((patientWaste.equals("")) && (! naCB.isChecked())) ||
 				(wasteNurse1Value.equals("")) || (wasteNurse2Value.equals("")))) {
 			AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
             dialog.setTitle("Missing Data");
-            dialog.setMessage("Please enter the Wasted Amount, Reason and both Nurses");
+            dialog.setMessage("Please enter the Wasted Amount, Paitent, Reason and both Nurses");
+            dialog.setCancelable(false);
+            dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog,int id) {
+                	dialog.cancel();
+                }
+            });
+            dialog.show();
+		} else if ((getTransType() == WASTETRANS) &&
+				((! patientWaste.equals("")) && (naCB.isChecked()))) {
+			AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+            dialog.setTitle("Missing Data");
+            dialog.setMessage("Please enter either a Paitent or check the N/A box, but not both.");
             dialog.setCancelable(false);
             dialog.setPositiveButton("OK",new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog,int id) {
@@ -617,16 +634,22 @@ public class TransactionDialog {
 							}
 						});
 			} else if (getTransType() == WASTETRANS) {
+				final String patientWasteFinal;
+				if (naCB.isChecked()) {
+					patientWasteFinal = "N/A";
+				} else {
+					patientWasteFinal = patientWaste;
+				}
 				confirmDialog.setMessage(action + " Quantity: "
 						+ wasteAmt + "\n" + drug.name() + "\n" + "Patient: "
-						+ patientWaste + "\n" + "Reason for waste: " + wasteReason + "\n"
+						+ patientWasteFinal + "\n" + "Reason for waste: " + wasteReason + "\n"
 						+ "Nurse 1: " + wasteNurse1Value + "\n" + "Nurse 2: "
 						+ wasteNurse2Value);
 				confirmDialog.setPositiveButton(R.string.yes,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int id) {
-								trans = new Transaction(wasteAmt, wasteReason, patientWaste, wasteNurse1Value, wasteNurse2Value);
+								trans = new Transaction(wasteAmt, wasteReason, patientWasteFinal, wasteNurse1Value, wasteNurse2Value);
 								Intent sigIntent = new Intent(myApp.getActivity(), CaptureSignature.class);
 								sigIntent.putExtra("Name", wasteNurse1Value);
 								myApp.getActivity().startActivityForResult(sigIntent,

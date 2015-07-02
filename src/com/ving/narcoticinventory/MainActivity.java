@@ -12,8 +12,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
@@ -147,7 +151,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int arg1) {
 								dialog.dismiss();
-								Intent uci = new Intent(myApp, SetDrugCounts.class);
+								Intent uci = new Intent(myApp,
+										SetDrugCounts.class);
 								uci.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 								myApp.startActivity(uci);
 							}
@@ -186,7 +191,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int arg1) {
 								dialog.dismiss();
-								Intent uci = new Intent(myApp, SetDrugCounts.class);
+								Intent uci = new Intent(myApp,
+										SetDrugCounts.class);
 								uci.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 								myApp.startActivity(uci);
 							}
@@ -209,6 +215,66 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			break;
 		case R.id.deleteReport:
 			deleteReport();
+			break;
+		case R.id.about:
+			View dialogViewAbout = getLayoutInflater().inflate(R.layout.dialog_about, null);
+			Button okBtn = (Button) dialogViewAbout.findViewById(R.id.positiveB);
+			TextView versionTV = (TextView) dialogViewAbout.findViewById(R.id.versionNum);
+			PackageInfo pinfo;
+			String version;
+			try {
+				pinfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+				version = "Version: " + pinfo.versionName;
+			} catch (NameNotFoundException e) {
+				version = "Version: N/A";
+			}
+			versionTV.setText(version);
+			Button emailBtn = (Button) dialogViewAbout.findViewById(R.id.emailAddr);
+			final String emailAddr = getResources().getString(R.string.emailAddr);
+			emailBtn.setText(emailAddr);
+			emailBtn.setTextColor(Color.BLUE);
+			emailBtn.setPaintFlags(emailBtn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+			Button webSiteBtn = (Button) dialogViewAbout.findViewById(R.id.webSite);
+			final String webSite = getResources().getString(R.string.webpage);
+			webSiteBtn.setText(webSite);
+			webSiteBtn.setTextColor(Color.BLUE);
+			webSiteBtn.setPaintFlags(emailBtn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+			AlertDialog.Builder dialog = new AlertDialog.Builder(mContext);
+			dialog.setView(dialogViewAbout);
+			dialog.setCancelable(false);
+			final AlertDialog versionDialog = dialog.create();
+			versionDialog.setView(dialogViewAbout);
+			versionDialog.setCancelable(false);
+			final String subject = "Gas Mileage App " + version;
+			emailBtn.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					versionDialog.dismiss();
+					Intent sendIntent = new Intent(Intent.ACTION_SEND);
+					sendIntent.putExtra(Intent.EXTRA_EMAIL,
+							new String[] { emailAddr });
+					sendIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+					sendIntent.setType("message/rfc822");
+					try {
+						startActivity(sendIntent);
+					} catch (android.content.ActivityNotFoundException ex) {
+						myApp.toastMessage("There are no email clients installed. "
+								+ ex.toString());
+					}
+				}
+			});
+			webSiteBtn.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					versionDialog.dismiss();
+					Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(webSite));
+					startActivity(browserIntent);
+				}
+			});
+			okBtn.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					versionDialog.dismiss();
+				}
+			});
+			versionDialog.show();
 			break;
 		default:
 			rtn = super.onOptionsItemSelected(item);
@@ -264,12 +330,14 @@ public class MainActivity extends Activity implements OnItemClickListener {
 			printReportDialog.show();
 		}
 	}
-	
+
 	private void deleteReport() {
 		File files[] = myApp.baseDirectory().listFiles();
 		ArrayList<String> reports = new ArrayList<String>();
 		for (int i = 0; i < files.length; i++) {
-			if ((files[i].isDirectory()) && (! files[i].getName().equals(myApp.getDrugs().todayString()))) {
+			if ((files[i].isDirectory())
+					&& (!files[i].getName().equals(
+							myApp.getDrugs().todayString()))) {
 				reports.add(files[i].getName());
 			}
 		}
@@ -320,7 +388,8 @@ public class MainActivity extends Activity implements OnItemClickListener {
 		}
 		if (deleteReportDialog != null) {
 			deleteReportDialog.dismiss();
-			Thread deleteReportThread = new Thread(new DeleteReport(myApp, adapter.getItem(position)));
+			Thread deleteReportThread = new Thread(new DeleteReport(myApp,
+					adapter.getItem(position)));
 			deleteReportThread.start();
 		}
 	}
@@ -409,17 +478,23 @@ public class MainActivity extends Activity implements OnItemClickListener {
 				if (status.equalsIgnoreCase("done")) {
 					String fileName = bundle.getString("filename");
 					if (transDialog.transaction().getAction() == Transaction.WASTE) {
-						if (transDialog.transaction().signatureFile().equals("")) {
-							transDialog.transaction().setSignatureFile(fileName);
-							Intent sigIntent = new Intent(MainActivity.this, CaptureSignature.class);
-		                	sigIntent.putExtra("Name",transDialog.nurse2());
-		                    startActivityForResult(sigIntent,CaptureSignature.SIGNATURE_ACTIVITY);
+						if (transDialog.transaction().signatureFile()
+								.equals("")) {
+							transDialog.transaction()
+									.setSignatureFile(fileName);
+							Intent sigIntent = new Intent(MainActivity.this,
+									CaptureSignature.class);
+							sigIntent.putExtra("Name", transDialog.nurse2());
+							startActivityForResult(sigIntent,
+									CaptureSignature.SIGNATURE_ACTIVITY);
 						} else {
-							transDialog.transaction().setSignatureFile(2, fileName);
+							transDialog.transaction().setSignatureFile(2,
+									fileName);
 							currentDrug.transaction(transDialog.transaction());
 							SaveTransactionData saveTrans = new SaveTransactionData(
 									currentDrug, myApp);
-							Thread saveTransactionsThread = new Thread(saveTrans);
+							Thread saveTransactionsThread = new Thread(
+									saveTrans);
 							saveTransactionsThread.start();
 							transDialog.closeDialog();
 							transDialog = null;

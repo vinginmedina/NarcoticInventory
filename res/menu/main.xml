@@ -58,5 +58,11 @@
         android:title="@string/printReport"
         android:orderInCategory="700"
         android:showAsAction="never" />
+    
+    <item 
+        android:id="@+id/about"
+        android:title="@string/about"
+        android:orderInCategory="800"
+        android:showAsAction="never" />
 
 </menu>

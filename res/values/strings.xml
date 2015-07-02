@@ -88,6 +88,7 @@
     <string name="restoredata">Restore Data</string>
     <string name="printRpt">Print Report</string>
     <string name="emailRpt">EMail Report</string>
+    <string name="about">About</string>
     <string name="errorDialog">Do you want to mark this transaction as being in error and replace it with a new transaction?</string>
     <string name="printList">This is a list of available reports.\n\nSelect the report you would like to view or print or email.</string>
     <string name="deleteList">This is a list of old reports.\n\nSelect the report you would like to delete.\n\nNote: there is no undo for this operation.</string>
@@ -98,5 +99,8 @@
     <string name="settings_bg_color_dialog">Pick a Color</string>
     <string name="settings_default_color_confirm">Set to Default Color</string>
     <string name="settings_bg_color_confirm">Set to This Color</string>
+    <string name="suppMessage">Thank you for installing and using this app. If you have any questions or comments, you may contact the developer via email or visit the web site.</string>
+    <string name="emailAddr">support@vinginmedina.com</string>
+    <string name="webpage">http://www.vinginmedina.com/narcotic-menu</string>
 
 </resources>
